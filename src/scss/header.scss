@@ -1,0 +1,83 @@
+* {
+  background-color: transparent;
+  color: #ffffff;
+}
+body{
+  background-color: aqua;
+  color: transparent;
+}
+input{display: none;}
+.carusel *{
+  color: transparent;
+}
+.carusel{
+  position: relative;
+  max-width: 490px;
+  height: 490px;
+  max-height: 100vh;
+  margin: 20px auto;
+  overflow: hidden;
+  user-select: none;
+  //opacity: 0.8;
+  &:hover{
+    opacity: 1;
+    //-webkit-box-shadow: 0 0 7px 2px rgba(0,0,0,0.58);
+    //-moz-box-shadow: 0 0 7px 2px rgba(0,0,0,0.58);
+    //box-shadow: 0 0 7px 2px rgba(0,0,0,0.58);
+    transition: 0.5s;
+  }
+}
+.carusel__item {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: left 0.5s, transform 0.5s;
+  will-change: transform;
+  backface-visibility: hidden;
+  color: transparent;
+}
+.carusel__arrow:hover {
+  opacity: 1;
+}
+.carusel__arrow {
+  position: absolute;
+  top: calc(50% - 29px);
+  z-index: 3;
+  opacity: .4;
+  line-height: 58.29px;
+  font-size: 50px;
+  font-family:'monospace';
+  color: #fff;
+  background-color: rgba(200,200,200,1) !important;
+  border-radius: 50%;
+  width: 58px;
+  text-align: center;
+}
+input:checked+div~div~div~div .carusel__item {background-image: none !important;}
+input:checked+div *, input:checked+div+input+div .carusel__item, input:checked+div+input+div+input+div * {display: block;}
+input:checked+div .carusel__item {left: -100%; transform: (0.4);}
+input:checked+div+input+div .carusel__item {left: 0; transform: scale(1);}
+input:checked+div+input+div+input+div .carusel__item {left: 100%; transform: (0.4);}
+input:checked+div .carusel__arrow {left: 0;}
+input:checked+div+input+div+input+div .carusel__arrow {right: 0;}
+input:checked+div .carusel__arrow:before,
+input:checked+div+input+div+input+div .carusel__arrow:before {
+  cursor: pointer;
+  padding: 0 10px;
+  line-height: 51px;
+  display: block;
+  margin: auto;
+  height: 58px;
+}
+input:checked+div .carusel__arrow:before {
+  content: '<';
+  }
+input:checked+div+input+div+input+div .carusel__arrow:before{
+  content: '>';
+}
